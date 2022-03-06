@@ -34,6 +34,8 @@ def send_help(message):
         '   /eur - получить курс евро по отношению к белорусскому рублю\n'
         '   /rub - получить курс российского рубля'
         ' по отношению к белорусскому рублю\n'
+        '   /pln - получить курс польского злотого'
+        ' по отношению к белорусскому рублю\n'
     )
 
 
@@ -70,6 +72,19 @@ def rub(message):
     for info in data:
         out_message += 'Курс продажи {}, курс покупки {}.\n'.format(
             info['RUB_in'], info['RUB_out']
+        )
+    if not out_message:
+        out_message = 'Сайт сейчас не доступен.'
+    bot.send_message(message.chat.id, out_message)
+
+
+@bot.message_handler(commands=['pln'])
+def pln(message):
+    data = get_rate()
+    out_message = ''
+    for info in data:
+        out_message += 'Курс продажи {}, курс покупки {}.\n'.format(
+            info['PLN_in'], info['PLN_out']
         )
     if not out_message:
         out_message = 'Сайт сейчас не доступен.'
