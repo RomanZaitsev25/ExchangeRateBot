@@ -20,7 +20,8 @@ def send_welcome(message):
     bot.send_message(
         message.chat.id,
         'Этот бот даёт информацию о курсе валют на сегодняшний день '
-        'в отделении Беларусбанка в г.Червене.'
+        'в отделении Беларусбанка в г.Червень, ул.К.Маркса, 5а. Для получении '
+        'информации об интересующей вас валюте нажмите /help.'
     )
 
 
@@ -40,7 +41,7 @@ def send_help(message):
 
 
 @bot.message_handler(commands=['usd'])
-def usd(message):
+def send_usd(message):
     data = get_rate()
     out_message = ''
     for info in data:
@@ -53,7 +54,7 @@ def usd(message):
 
 
 @bot.message_handler(commands=['eur'])
-def eur(message):
+def send_eur(message):
     data = get_rate()
     out_message = ''
     for info in data:
@@ -66,7 +67,7 @@ def eur(message):
 
 
 @bot.message_handler(commands=['rub'])
-def rub(message):
+def send_rub(message):
     data = get_rate()
     out_message = ''
     for info in data:
@@ -79,7 +80,7 @@ def rub(message):
 
 
 @bot.message_handler(commands=['pln'])
-def pln(message):
+def send_pln(message):
     data = get_rate()
     out_message = ''
     for info in data:
